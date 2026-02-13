@@ -7,6 +7,7 @@ from textual.binding import Binding
 from typing import List
 from ..models import Exercise
 from .typing_view import TypingView
+from .about_view import AboutView
 
 
 class MenuView(Screen):
@@ -15,6 +16,7 @@ class MenuView(Screen):
     BINDINGS = [
         Binding("q", "quit", "Quit"),
         Binding("enter", "select_exercise", "Select", show=True),
+        Binding("a", "show_about", "About", show=True),
     ]
     
     CSS = """
@@ -62,7 +64,7 @@ class MenuView(Screen):
     def compose(self) -> ComposeResult:
         """Compose the menu view."""
         yield Header()
-        yield Static("Touch Typing Trainer", id="title")
+        yield Static("🎯 Touch Typing Trainer", id="title")
         yield Static("Select an exercise to begin", id="instructions")
         yield ListView(id="exercise_list")
         yield Footer()
@@ -75,7 +77,18 @@ class MenuView(Screen):
         for exercise in self.exercises:
             item = ListItem(Static(f"📝 {exercise.title}"))
             item.exercise = exercise  # Store exercise reference
+            item.is_about = False
             list_view.append(item)
+        
+        # Add separator and About item at the bottom
+        separator = ListItem(Static("─" * 40))
+        separator.is_about = False
+        separator.is_separator = True
+        list_view.append(separator)
+        
+        about_item = ListItem(Static("ℹ️  About TouchPy"))
+        about_item.is_about = True
+        list_view.append(about_item)
         
         # Focus the list view
         list_view.focus()
@@ -83,7 +96,17 @@ class MenuView(Screen):
     def on_list_view_selected(self, event: ListView.Selected) -> None:
         """Handle ListView selection (Enter key or click)."""
         selected_item = event.item
-        if hasattr(selected_item, 'exercise'):
+        
+        # Check if it's a separator (do nothing)
+        if hasattr(selected_item, 'is_separator') and selected_item.is_separator:
+            return
+        
+        # Check if it's the About item
+        if hasattr(selected_item, 'is_about') and selected_item.is_about:
+            about_screen = AboutView()
+            self.app.push_screen(about_screen)
+        # Otherwise it's an exercise
+        elif hasattr(selected_item, 'exercise'):
             exercise = selected_item.exercise
             # Switch to typing view with the selected exercise
             typing_screen = TypingView(exercise)
@@ -95,11 +118,26 @@ class MenuView(Screen):
         
         if list_view.highlighted_child:
             selected_item = list_view.highlighted_child
-            if hasattr(selected_item, 'exercise'):
+            
+            # Check if it's a separator (do nothing)
+            if hasattr(selected_item, 'is_separator') and selected_item.is_separator:
+                return
+            
+            # Check if it's the About item
+            if hasattr(selected_item, 'is_about') and selected_item.is_about:
+                about_screen = AboutView()
+                self.app.push_screen(about_screen)
+            # Otherwise it's an exercise
+            elif hasattr(selected_item, 'exercise'):
                 exercise = selected_item.exercise
                 # Switch to typing view with the selected exercise
                 typing_screen = TypingView(exercise)
                 self.app.push_screen(typing_screen)
+    
+    def action_show_about(self) -> None:
+        """Show the About screen."""
+        about_screen = AboutView()
+        self.app.push_screen(about_screen)
     
     def action_quit(self) -> None:
         """Quit the application."""
