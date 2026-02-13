@@ -48,7 +48,7 @@ class MenuView(Screen):
     }
     
     ListItem {
-        padding: 1 2;
+        padding: 0 0;
     }
     """
     
