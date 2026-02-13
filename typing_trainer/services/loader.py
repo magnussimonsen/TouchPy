@@ -6,38 +6,50 @@ from ..models import Exercise
 
 
 class ExerciseLoader:
-    """Loads exercises from .txt files in a directory."""
+    """Loads exercises from .txt files in one or more directories."""
     
-    def __init__(self, exercises_dir: Path):
-        """Initialize the loader with an exercises directory.
+    def __init__(self, exercises_dirs):
+        """Initialize the loader with exercises directory/directories.
         
         Args:
-            exercises_dir: Path to the directory containing exercise files
+            exercises_dirs: Path or list of Paths to directories containing exercise files
         """
-        self.exercises_dir = exercises_dir
+        # Support both single path and list of paths
+        if isinstance(exercises_dirs, (Path, str)):
+            self.exercises_dirs = [Path(exercises_dirs)]
+        else:
+            self.exercises_dirs = [Path(d) for d in exercises_dirs]
     
     def load_exercises(self) -> List[Exercise]:
-        """Load all exercises from .txt files in the exercises directory.
+        """Load all exercises from .txt files in all exercises directories.
         
         Returns:
             List of Exercise objects sorted by filename
         """
         exercises = []
+        seen_ids = set()  # Track IDs to avoid duplicates
         
-        if not self.exercises_dir.exists():
-            return exercises
+        # Load from all directories (external directory first for priority)
+        for exercises_dir in reversed(self.exercises_dirs):
+            if not exercises_dir.exists():
+                continue
+            
+            # Find all .txt files in the exercises directory
+            txt_files = sorted(exercises_dir.glob("*.txt"))
+            
+            for file_path in txt_files:
+                try:
+                    exercise = self._load_exercise(file_path)
+                    # Only add if we haven't seen this ID before (external overrides internal)
+                    if exercise.id not in seen_ids:
+                        exercises.append(exercise)
+                        seen_ids.add(exercise.id)
+                except Exception as e:
+                    # Skip files that can't be loaded
+                    print(f"Warning: Could not load {file_path}: {e}")
         
-        # Find all .txt files in the exercises directory
-        txt_files = sorted(self.exercises_dir.glob("*.txt"))
-        
-        for file_path in txt_files:
-            try:
-                exercise = self._load_exercise(file_path)
-                exercises.append(exercise)
-            except Exception as e:
-                # Skip files that can't be loaded
-                print(f"Warning: Could not load {file_path}: {e}")
-        
+        # Sort by ID to maintain consistent order
+        exercises.sort(key=lambda e: e.id)
         return exercises
     
     def _load_exercise(self, file_path: Path) -> Exercise:

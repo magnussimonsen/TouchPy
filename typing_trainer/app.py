@@ -1,5 +1,6 @@
 """Main application for the touch typing trainer."""
 
+import sys
 from pathlib import Path
 from textual.app import App
 from .views.menu_view import MenuView
@@ -22,9 +23,21 @@ class TypingTrainerApp(App):
         super().__init__()
         self.title = "Touch Typing Trainer"
         
-        # Set up exercises directory
-        self.exercises_dir = Path(__file__).parent / "exercises"
-        self.loader = ExerciseLoader(self.exercises_dir)
+        # Set up exercises directories
+        # 1. Internal exercises (bundled with the app)
+        internal_dir = Path(__file__).parent / "exercises"
+        
+        # 2. External exercises (next to the .exe file for user customization)
+        if getattr(sys, 'frozen', False):
+            # Running as compiled .exe
+            app_dir = Path(sys.executable).parent
+        else:
+            # Running in development mode
+            app_dir = Path(__file__).parent.parent
+        external_dir = app_dir / "exercises"
+        
+        # Load exercises from both locations
+        self.loader = ExerciseLoader([internal_dir, external_dir])
         self.exercises = []
     
     def on_mount(self) -> None:

@@ -2,13 +2,20 @@
 
 A beautiful terminal-based touch typing trainer built with Python, Textual, and Rich.
 
+## Screenshots
+
+![TouchPy Menu](screenshots/TouchPy-1.png)
+![TouchPy Typing View](screenshots/TouchPy-2.png)
+
 ## Features
 
 - 🎨 **Beautiful Terminal UI** - Modern, colorful interface using Textual
 - ⚡ **Real-time Feedback** - See your typing speed (WPM) and accuracy live
 - 🎯 **Visual Highlighting** - Correct characters in green, mistakes in red
-- � **Mistake Tracking** - See how many errors you make in real-time
-- 📚 **Multiple Exercises** - 7 built-in exercises covering home row, top row, bottom row, and more
+- ❌ **Mistake Tracking** - See how many errors you make in real-time
+- 📚 **Multiple Exercises** - 17+ built-in exercises including Norwegian texts
+- 🇳🇴 **Norwegian Support** - Special exercises for æ, ø, å and Norwegian literature
+- ➕ **Custom Exercises** - Add your own .txt files without rebuilding
 - ⏱️ **Automatic Timer** - Timer starts when you begin typing
 - 📊 **Performance Summary** - Get detailed stats after each exercise
 - ✏️ **Backspace Support** - Fix mistakes as you type
@@ -67,6 +74,51 @@ After building:
 
 For detailed build instructions and customization options, see [BUILD.md](BUILD.md).
 
+## Adding Custom Exercises
+
+**For .exe users:** You can add new exercises without rebuilding!
+
+1. Create an `exercises` folder next to `TouchPy.exe`
+2. Add `.txt` files with this format:
+   - Line 1: Exercise title
+   - Rest: Exercise text
+
+See [EXERCISES_README.md](EXERCISES_README.md) for detailed instructions.
+
+**For developers:** Add `.txt` files to `typing_trainer/exercises/` or `exercises/` folder.
+
+## Built-in Exercises
+
+TouchPy includes several exercise categories:
+
+### Basic Exercises
+
+- Home Row Basics
+- Home Row Words
+- Top Row Practice
+- Bottom Row Practice
+- Common Words Practice
+- Numbers and Symbols
+- Programming Practice
+
+### Norwegian Exercises (Norske øvelser)
+
+- Norske bokstaver (æ, ø, å)
+- Norske ord
+- Norske pangram og setninger
+- Vanlige norske uttrykk
+- Norske byer og steder
+
+### Norwegian Literature (Norsk litteratur)
+
+- Fra Knut Hamsun - "Sult" (1890)
+- Fra Sigrid Undset - "Jenny" (1911)
+- Fra Nordahl Grieg - "Ung må verden ennu være" (1938)
+- Fra Johan Bojer - "Den siste viking" (1921)
+- Fra Olav Duun - "Juvikingar" (1918)
+
+All classic literature texts are from works published before 1955 and are in the public domain.
+
 ## How to Use
 
 1. **Select an Exercise** - Use arrow keys to navigate the menu, press Enter to select
@@ -97,41 +149,27 @@ TouchPy/
 │   ├── views/
 │   │   ├── menu_view.py       # Exercise selection screen
 │   │   ├── typing_view.py     # Main typing practice screen
-│   │   └── summary_view.py    # Results screen
-│   └── exercises/
+│   │   ├── summary_view.py    # Results screen
+│   │   └── about_view.py      # About/credits screen
+│   └── exercises/             # Built-in exercises
 │       ├── 001_home_row.txt
-│       ├── 002_home_row_words.txt
-│       ├── 003_top_row.txt
-│       ├── 004_bottom_row.txt
-│       ├── 005_pangrams.txt
-│       ├── 006_numbers_symbols.txt
-│       └── 007_code_practice.txt
+│       ├── 008_norwegian_letters.txt
+│       ├── 013_hamsun.txt
+│       └── ...
+├── exercises/                  # Custom exercises (not in git)
+│   └── (add your own .txt files here)
 ├── requirements.txt
+├── requirements-build.txt
+├── build.ps1
+├── TouchPy.spec
+├── BUILD.md
+├── EXERCISES_README.md
 ├── run.py
 └── README.md
 ```
 
-## Creating Custom Exercises
+## Technical Details
 
-You can easily add your own exercises! Just create a `.txt` file in the `typing_trainer/exercises/` directory:
-
-1. **First line**: Exercise title
-2. **Remaining lines**: The text to type
-
-Example (`exercises/008_my_exercise.txt`):
-
-```
-My Custom Exercise
-This is the text that users will practice typing.
-It can span multiple lines.
-```
-
-The exercises will automatically appear in the menu, sorted by filename.
-
-## Built-in Exercises
-
-1. **Home Row Basics** - Practice the home row keys (asdf jkl;)
-2. **Home Row Words** - Simple words using only home row
 3. **Top Row Practice** - Practice the top row keys (qwerty uiop)
 4. **Bottom Row Practice** - Practice the bottom row keys (zxcvbnm)
 5. **Common Words Practice** - Famous pangrams like "the quick brown fox"

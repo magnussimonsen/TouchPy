@@ -1,0 +1,4 @@
+Eksempel på egendefinert øvelse
+Dette er en fil som brukeren kan legge til i en "exercises"-mappe
+ved siden av TouchPy.exe for å lage sine egne treningsøvelser.
+Du kan skrive hva du vil her, og det vil dukke opp i menyen!

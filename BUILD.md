@@ -43,6 +43,25 @@ To distribute your app:
 2. Share it with others
 3. Users can run `TouchPy.exe` directly (no Python installation needed!)
 
+### Adding Custom Exercises After Build
+
+Users can add their own exercises **without rebuilding**:
+
+1. Create an `exercises` folder next to `TouchPy.exe`:
+
+   ```
+   dist\TouchPy\
+   ├── TouchPy.exe
+   └── exercises\          ← Create this folder
+       └── 018_custom.txt
+   ```
+
+2. Add `.txt` files with format:
+   - Line 1: Exercise title
+   - Rest: Exercise text
+
+See [EXERCISES_README.md](EXERCISES_README.md) for detailed instructions.
+
 ## Customization
 
 ### Add an Icon
