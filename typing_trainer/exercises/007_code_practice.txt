@@ -1,0 +1,8 @@
+Programming Practice
+def hello_world():
+    print("Hello, World!")
+    return True
+
+for i in range(10):
+    if i % 2 == 0:
+        print(f"Even: {i}")
