@@ -59,6 +59,7 @@ class TypingView(Screen):
     # Reactive attributes
     elapsed_time = reactive(0.0)
     wpm = reactive(0.0)
+    mistakes = reactive(0)
     
     def __init__(self, exercise: Exercise):
         """Initialize the typing view.
@@ -70,6 +71,7 @@ class TypingView(Screen):
         self.exercise = exercise
         self.start_time: float = None
         self.typed_text = ""
+        self.previous_typed_text = ""
         self.timer_started = False
         self.metrics_calculator = MetricsCalculator()
         self.update_timer_callback = None
@@ -99,7 +101,7 @@ class TypingView(Screen):
     
     def _format_stats(self) -> str:
         """Format the stats display."""
-        return f"⏱️  Time: {self.elapsed_time:.1f}s  |  ⚡ WPM: {self.wpm:.1f}"
+        return f"⏱️  Time: {self.elapsed_time:.1f}s  |  ⚡ WPM: {self.wpm:.1f}  |  ❌ Mistakes: {self.mistakes}  |  ESC: Quit"
     
     def _render_target_text(self) -> Text:
         """Render the target text with highlighting."""
@@ -136,9 +138,9 @@ class TypingView(Screen):
         if not self.timer_started:
             self.timer_started = True
             self.start_time = time.time()
-            self.update_timer_callback = self.set_interval(0.1, self._update_timer)
+            self.update_timer_callback = self.set_interval(0.1, self._update_metrics_timer)
     
-    def _update_timer(self) -> None:
+    def _update_metrics_timer(self) -> None:
         """Update the elapsed time and WPM."""
         if self.start_time:
             self.elapsed_time = time.time() - self.start_time
@@ -154,7 +156,19 @@ class TypingView(Screen):
         if event.value and not self.timer_started:
             self._start_timer()
         
-        self.typed_text = event.value
+        # Track mistakes: count when a character is added that doesn't match
+        new_text = event.value
+        if len(new_text) > len(self.previous_typed_text):
+            # User typed a new character
+            char_position = len(self.previous_typed_text)
+            if char_position < len(self.exercise.text):
+                expected_char = self.exercise.text[char_position]
+                typed_char = new_text[char_position]
+                if expected_char != typed_char:
+                    self.mistakes += 1
+        
+        self.previous_typed_text = new_text
+        self.typed_text = new_text
         
         # Check if exercise is complete
         if self.typed_text == self.exercise.text:
@@ -179,7 +193,8 @@ class TypingView(Screen):
             "exercise": self.exercise,
             "wpm": self.wpm,
             "accuracy": accuracy,
-            "elapsed_time": self.elapsed_time
+            "elapsed_time": self.elapsed_time,
+            "mistakes": self.mistakes
         }
         summary_screen = SummaryView(results)
         self.app.push_screen(summary_screen)

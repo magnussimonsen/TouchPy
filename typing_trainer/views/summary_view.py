@@ -65,6 +65,7 @@ class SummaryView(Screen):
                 - wpm: Words per minute
                 - accuracy: Accuracy percentage
                 - elapsed_time: Time taken in seconds
+                - mistakes: Number of typing mistakes
         """
         super().__init__()
         self.results = results
@@ -87,6 +88,10 @@ class SummaryView(Screen):
             )
             yield Static(
                 f"⏱️  Time: {self.results['elapsed_time']:.1f}s",
+                classes="stat"
+            )
+            yield Static(
+                f"❌ Mistakes: {self.results.get('mistakes', 0)}",
                 classes="stat"
             )
             yield Static("", classes="stat")  # Spacer
