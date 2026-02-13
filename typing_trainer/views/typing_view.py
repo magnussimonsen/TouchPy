@@ -2,7 +2,7 @@
 
 from textual.app import ComposeResult
 from textual.screen import Screen
-from textual.widgets import Header, Footer, Static, Input
+from textual.widgets import Header, Footer, Static, TextArea
 from textual.binding import Binding
 from textual.reactive import reactive
 from rich.text import Text
@@ -51,8 +51,11 @@ class TypingView(Screen):
         margin: 1 0;
     }
     
-    Input {
+    TextArea {
         width: 100%;
+        height: 12;
+        border: solid $primary;
+        background: $surface;
     }
     """
     
@@ -73,6 +76,7 @@ class TypingView(Screen):
         self.typed_text = ""
         self.previous_typed_text = ""
         self.timer_started = False
+        self.exercise_completed = False
         self.metrics_calculator = MetricsCalculator()
         self.update_timer_callback = None
     
@@ -88,16 +92,16 @@ class TypingView(Screen):
         target_text = self._render_target_text()
         yield Static(target_text, id="target_text_container")
         
-        # Input field
-        input_widget = Input(placeholder="Start typing here...")
-        input_widget.id = "typing_input"
-        yield input_widget
+        # Text area for typing (supports multi-line)
+        text_area = TextArea(id="typing_input")
+        text_area.show_line_numbers = False
+        yield text_area
         
         yield Footer()
     
     def on_mount(self) -> None:
-        """Focus the input when the screen is mounted."""
-        self.query_one("#typing_input", Input).focus()
+        """Focus the text area when the screen is mounted."""
+        self.query_one("#typing_input", TextArea).focus()
     
     def _format_stats(self) -> str:
         """Format the stats display."""
@@ -150,14 +154,21 @@ class TypingView(Screen):
             )
             self._update_display()
     
-    def on_input_changed(self, event: Input.Changed) -> None:
-        """Handle input changes."""
+    def on_text_area_changed(self, event: TextArea.Changed) -> None:
+        """Handle text area changes."""
+        # Don't process if exercise is already completed
+        if self.exercise_completed:
+            return
+        
+        # Get the text area content
+        text_area = event.text_area
+        new_text = text_area.text
+        
         # Start timer on first character
-        if event.value and not self.timer_started:
+        if new_text and not self.timer_started:
             self._start_timer()
         
         # Track mistakes: count when a character is added that doesn't match
-        new_text = event.value
         if len(new_text) > len(self.previous_typed_text):
             # User typed a new character
             char_position = len(self.previous_typed_text)
@@ -171,21 +182,33 @@ class TypingView(Screen):
         self.typed_text = new_text
         
         # Check if exercise is complete
-        if self.typed_text == self.exercise.text:
+        # Complete when user has typed the same number of characters as the exercise
+        # (regardless of whether they're correct or not)
+        exercise_length = len(self.exercise.text.rstrip())
+        typed_length = len(self.typed_text.rstrip())
+        
+        if typed_length >= exercise_length and exercise_length > 0:
             self._complete_exercise()
         
         self._update_display()
     
     def _complete_exercise(self) -> None:
         """Handle exercise completion."""
-        # Stop the timer
+        # Mark as completed to prevent multiple completions
+        self.exercise_completed = True
+        
+        # Stop the timer immediately
         if self.update_timer_callback:
             self.update_timer_callback.stop()
+            self.update_timer_callback = None
         
-        # Calculate final metrics
+        # Calculate final metrics using the stripped text
+        final_text = self.typed_text.rstrip()
+        exercise_text = self.exercise.text.rstrip()
+        
         accuracy = self.metrics_calculator.calculate_accuracy(
-            self.exercise.text,
-            self.typed_text
+            exercise_text,
+            final_text
         )
         
         # Switch to summary view

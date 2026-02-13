@@ -7,10 +7,12 @@ A beautiful terminal-based touch typing trainer built with Python, Textual, and 
 - 🎨 **Beautiful Terminal UI** - Modern, colorful interface using Textual
 - ⚡ **Real-time Feedback** - See your typing speed (WPM) and accuracy live
 - 🎯 **Visual Highlighting** - Correct characters in green, mistakes in red
+- � **Mistake Tracking** - See how many errors you make in real-time
 - 📚 **Multiple Exercises** - 7 built-in exercises covering home row, top row, bottom row, and more
 - ⏱️ **Automatic Timer** - Timer starts when you begin typing
 - 📊 **Performance Summary** - Get detailed stats after each exercise
 - ✏️ **Backspace Support** - Fix mistakes as you type
+- 🚪 **Easy Exit** - Press ESC anytime to return to menu
 
 ## Installation
 
@@ -41,18 +43,43 @@ cd typing_trainer
 python app.py
 ```
 
+## Building to Executable (.exe)
+
+You can build TouchPy into a standalone Windows executable that doesn't require Python to be installed!
+
+### Quick Build
+
+Run the automated build script:
+
+```powershell
+.\build.ps1
+```
+
+This will create `dist\TouchPy\TouchPy.exe` that you can share with others.
+
+### Distribution
+
+After building:
+
+1. The executable is in `dist\TouchPy\TouchPy.exe`
+2. Share the entire `dist\TouchPy` folder
+3. Users can run `TouchPy.exe` directly (no Python needed!)
+
+For detailed build instructions and customization options, see [BUILD.md](BUILD.md).
+
 ## How to Use
 
 1. **Select an Exercise** - Use arrow keys to navigate the menu, press Enter to select
 2. **Start Typing** - The timer starts automatically when you type the first character
-3. **Watch Your Progress** - See real-time WPM and accuracy as you type
-4. **Complete the Exercise** - Type the entire text correctly to finish
-5. **Review Your Results** - Get a summary with your speed, accuracy, and time
+3. **Multi-line Exercises** - Press Enter to move to the next line when you reach the end of a line
+4. **Watch Your Progress** - See real-time WPM, accuracy, and mistake count as you type
+5. **Complete the Exercise** - Type the entire text correctly to finish
+6. **Review Your Results** - Get a summary with your speed, accuracy, time, and mistakes
 
 ### Keyboard Shortcuts
 
 - **Arrow Keys** - Navigate menu
-- **Enter** - Select exercise or return to menu
+- **Enter** - Select exercise (in menu) or move to next line (while typing)
 - **Escape** - Return to menu from typing view
 - **Q** - Quit from main menu
 - **Backspace** - Correct mistakes while typing
