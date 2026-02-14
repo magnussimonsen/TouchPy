@@ -140,7 +140,11 @@ class TypingView(Screen):
     
     def _format_stats(self) -> str:
         """Format the stats display."""
+<<<<<<< HEAD
         return f" Time: {self.elapsed_time:.1f}s  | WPM: {self.wpm:.1f}  |  Mistakes: {self.mistakes}  |  Lines Left: {self.lines_left}  |  ESC: Quit"
+=======
+        return f"⏱️  Time: {self.elapsed_time:.1f}s  |  ⚡ WPM: {self.wpm:.1f}  |  ❌ Mistakes: {self.mistakes}  |  📝 Lines Left: {self.lines_left}  |  ESC: Quit"
+>>>>>>> 029f98bb93dbf9ff3540bc42783bb13ec868b76d
     
     def _render_target_text(self) -> Text:
         """Render the target text with highlighting."""
@@ -200,11 +204,19 @@ class TypingView(Screen):
             if typed_len < len(current_line):
                 next_char = current_line[typed_len]
         
+<<<<<<< HEAD
         # Get top 3 mistakes (allowing space but excluding other whitespace like newline)
         sorted_mistakes = sorted(self.char_mistakes.items(), key=lambda x: x[1], reverse=True)
         error_keys = []
         for char, _ in sorted_mistakes:
             if char and (char == ' ' or char.strip()):
+=======
+        # Get top 3 mistakes (excluding whitespace)
+        sorted_mistakes = sorted(self.char_mistakes.items(), key=lambda x: x[1], reverse=True)
+        error_keys = []
+        for char, _ in sorted_mistakes:
+            if char and char.strip():
+>>>>>>> 029f98bb93dbf9ff3540bc42783bb13ec868b76d
                 error_keys.append(char)
                 if len(error_keys) >= 3:
                     break
