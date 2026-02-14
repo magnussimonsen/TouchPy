@@ -1,3 +1,4 @@
+Language: Norwegian
 Norske byer og steder
 oslo bergen trondheim tromsø stavanger
 kristiansand drammen fredrikstad bodø

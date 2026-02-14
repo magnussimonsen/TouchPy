@@ -1,3 +1,4 @@
+Language: English
 Common Words Practice
 the quick brown fox jumps over the lazy dog
 pack my box with five dozen liquor jugs
