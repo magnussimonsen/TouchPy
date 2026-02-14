@@ -1,3 +1,4 @@
+Language: Norwegian
 Vanlige norske uttrykk
 god morgen ha en fin dag
 takk skal du ha vær så god

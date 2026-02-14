@@ -13,11 +13,13 @@ class Exercise:
         title: Display title of the exercise
         text: The text content to type
         source_path: Path to the source file
+        layout: The keyboard layout to use (e.g. "English", "Norwegian")
     """
     id: str
     title: str
     text: str
     source_path: Path
+    layout: str = "English"
     
     @property
     def word_count(self) -> int:

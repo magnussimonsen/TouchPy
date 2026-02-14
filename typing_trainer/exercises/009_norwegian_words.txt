@@ -1,3 +1,4 @@
+Language: Norwegian
 Norske ord
 hei hallo god dag hvordan har du det
 jeg heter magnus og kommer fra norge

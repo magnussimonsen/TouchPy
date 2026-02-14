@@ -15,6 +15,11 @@ datas = [(exercises_path, 'typing_trainer/exercises')]
 datas += collect_data_files('textual')
 datas += collect_data_files('rich')
 
+# Manually add rich._unicode_data files
+import rich._unicode_data
+unicode_data_dir = os.path.dirname(rich._unicode_data.__file__)
+datas.append((unicode_data_dir, 'rich/_unicode_data'))
+
 a = Analysis(
     ['run.py'],
     pathex=[],

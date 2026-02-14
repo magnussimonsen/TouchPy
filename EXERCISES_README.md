@@ -15,15 +15,24 @@ TouchPy støtter egendefinerte treningsfiler som kan legges til uten å bygge pr
    ```
 
 2. **Lag en .txt-fil** med følgende format:
-   - **Første linje:** Tittel på øvelsen
-   - **Resten:** Teksten som skal skrives
+   - **Valgfri første linje:** `Language: Norwegian` eller `Language: English` (velger tastaturoppsett).
+   - **Neste linje (eller første hvis språk ikke er satt):** Tittel på øvelsen.
+   - **Resten:** Selve teksten som skal skrives.
 
-   **Eksempel** (`018_min_tekst.txt`):
+   **Eksempel 1 (Med språktagg):**
 
    ```
+   Language: Norwegian
    Min egen øvelse
    Dette er teksten som eleven skal skrive.
    Den kan ha flere linjer.
+   ```
+
+   **Eksempel 2 (Uten språktagg - bruker standard engelsk):**
+
+   ```
+   My English Exercise
+   This is the text to type.
    ```
 
 3. **Start programmet** - dine øvelser vises automatisk i listen!

@@ -10,4 +10,9 @@ sys.path.insert(0, str(Path(__file__).parent))
 from typing_trainer.app import main
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        input("Press Enter to close...")
+        sys.exit(1)

@@ -55,8 +55,8 @@ class ExerciseLoader:
     def _load_exercise(self, file_path: Path) -> Exercise:
         """Load a single exercise from a file.
         
-        The first line of the file is the title, and the remaining lines
-        are the exercise text.
+        The file may optionally start with metadata tags like 'keyboard-layout: Norwegian'.
+        The first non-metadata line is the title, and the remaining lines are the exercise text.
         
         Args:
             file_path: Path to the exercise file
@@ -70,14 +70,35 @@ class ExerciseLoader:
         if not lines:
             raise ValueError("Exercise file is empty")
         
-        # First line is the title
-        title = lines[0].strip()
+        layout = "English"
+        start_index = 0
+        
+        # Parse metadata
+        while start_index < len(lines):
+            line = lines[start_index].strip()
+            if line.lower().startswith("keyboard-layout:") or line.lower().startswith("language:"):
+                value = line.split(":", 1)[1].strip()
+                if "norwegian" in value.lower():
+                    layout = "Norwegian"
+                elif "english" in value.lower():
+                    layout = "English"
+                start_index += 1
+            else:
+                break
+        
+        if start_index >= len(lines):
+             raise ValueError("Exercise file has only metadata or is empty")
+
+        # First non-metadata line is the title
+        title = lines[start_index].strip()
         
         # Rest is the exercise text
-        text = ''.join(lines[1:]).strip()
+        text = ''.join(lines[start_index + 1:]).strip()
         
         if not text:
-            raise ValueError("Exercise text is empty")
+            # If text is empty, maybe the title was the text?
+            # But based on spec, title is mandatory.
+             raise ValueError("Exercise text is empty")
         
         # Use filename (without extension) as ID
         exercise_id = file_path.stem
@@ -86,5 +107,6 @@ class ExerciseLoader:
             id=exercise_id,
             title=title,
             text=text,
-            source_path=file_path
+            source_path=file_path,
+            layout=layout
         )

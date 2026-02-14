@@ -1,3 +1,4 @@
+Language: English 
 Home Row Basics
 fff jjj fff jjj fff jjj ddd kkk ddd kkk ddd kkk sss lll sss lll sss lll aaa ;;; aaa ;;; aaa ;;;
 asdf jkl; asdf jkl; asdf jkl; asdf jkl; asdf jkl;

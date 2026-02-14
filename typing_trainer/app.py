@@ -24,17 +24,29 @@ class TypingTrainerApp(App):
         self.title = "Touch Typing Trainer"
         
         # Set up exercises directories
-        # 1. Internal exercises (bundled with the app)
-        internal_dir = Path(__file__).parent / "exercises"
-        
-        # 2. External exercises (next to the .exe file for user customization)
         if getattr(sys, 'frozen', False):
             # Running as compiled .exe
+            if hasattr(sys, '_MEIPASS'):
+                # One-file mode
+                base_path = Path(sys._MEIPASS)
+            else:
+                # One-dir mode (TouchPy.spec uses this)
+                # In one-dir mode, sys.executable points to the exe
+                # The bundled files are relative to the exe directory
+                # But wait, PyInstaller structure for imports...
+                # Usually: dist/TouchPy/typing_trainer/exercises
+                base_path = Path(sys.executable).parent
+
+            internal_dir = base_path / "typing_trainer" / "exercises"
+            
+            # External exercises next to the .exe
             app_dir = Path(sys.executable).parent
+            external_dir = app_dir / "exercises"
         else:
             # Running in development mode
+            internal_dir = Path(__file__).parent / "exercises"
             app_dir = Path(__file__).parent.parent
-        external_dir = app_dir / "exercises"
+            external_dir = app_dir / "exercises"
         
         # Load exercises from both locations
         self.loader = ExerciseLoader([internal_dir, external_dir])
