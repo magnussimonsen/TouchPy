@@ -9,6 +9,7 @@ from ..models import Exercise
 from .typing_view import TypingView
 from .about_view import AboutView
 from .finger_map_view import FingerMapView
+from .custom_exercise_view import CustomExerciseInstructionsView
 
 
 class MenuView(Screen):
@@ -16,6 +17,7 @@ class MenuView(Screen):
     
     BINDINGS = [
         Binding("q", "quit", "Quit"),
+        Binding("c", "show_custom_help", "Custom Exercises", show=True),
         Binding("enter", "select_exercise", "Select", show=True),
         Binding("f", "show_map", "Finger Map", show=True),
         Binding("a", "show_about", "About", show=True),
@@ -142,6 +144,11 @@ class MenuView(Screen):
         map_screen = FingerMapView()
         self.app.push_screen(map_screen)
     
+    def action_show_custom_help(self) -> None:
+        """Show the custom exercises help screen."""
+        help_screen = CustomExerciseInstructionsView()
+        self.app.push_screen(help_screen)
+
     def action_quit(self) -> None:
         """Quit the application."""
         self.app.exit()
