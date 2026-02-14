@@ -21,7 +21,6 @@ A beautiful terminal-based touch typing trainer built with Python, Textual, and 
 - ⏱️ **Automatic Timer** - Timer starts when you begin typing
 - 📊 **Performance Summary** - Get detailed stats after each exercise
 - ✏️ **Backspace Support** - Fix mistakes as you type
-- 🚪 **Easy Exit** - Press ESC anytime to return to menu
 
 ## Installation
 
