@@ -64,7 +64,7 @@ class MenuView(Screen):
     def compose(self) -> ComposeResult:
         """Compose the menu view."""
         yield Header()
-        yield Static(" Touch Typing Trainer", id="title")
+        yield Static("Touch Typing Trainer", id="title")
         yield Static("Select an exercise to begin", id="instructions")
         yield ListView(id="exercise_list")
         yield Footer()
@@ -86,7 +86,7 @@ class MenuView(Screen):
         separator.is_separator = True
         list_view.append(separator)
         
-        about_item = ListItem(Static(" About TouchPy"))
+        about_item = ListItem(Static("About TouchPy"))
         about_item.is_about = True
         list_view.append(about_item)
         
