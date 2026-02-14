@@ -67,10 +67,10 @@ class AboutView(Screen):
         yield Header()
         
         with ScrollableContainer(id="about_container"):
-            yield Static("🎯 TouchPy - Touch Typing Trainer", id="title")
+            yield Static(" TouchPy - Touch Typing Trainer", id="title")
             
             # Authors section
-            yield Static("👥 Authors", classes="section_header")
+            yield Static("Authors", classes="section_header")
             yield Static(
                 "Magnus Simonsen & Claude Sonnet\n"
                 "GitHub: https://github.com/magnussimonsen/TouchPy",
@@ -78,7 +78,7 @@ class AboutView(Screen):
             )
             
             # Description section
-            yield Static("📖 About", classes="section_header")
+            yield Static("About", classes="section_header")
             yield Static(
                 "A terminal-based touch typing trainer built with Python, Textual, and Rich. "
                 "Practice typing with real-time feedback on speed, accuracy, and mistakes.",
@@ -86,7 +86,7 @@ class AboutView(Screen):
             )
             
             # License section
-            yield Static("⚖️ License", classes="section_header")
+            yield Static("License", classes="section_header")
             yield Static(
                 "MIT License - Copyright (c) 2026 Magnus Simonsen\n"
                 "Permission is granted to use, copy, modify, merge, publish, distribute, "
@@ -96,7 +96,7 @@ class AboutView(Screen):
             )
             
             # Technology section
-            yield Static("🛠️ Built With", classes="section_header")
+            yield Static("Built With", classes="section_header")
             yield Static(
                 "Python 3.8+ • Textual • Rich",
                 classes="section_text about_section"

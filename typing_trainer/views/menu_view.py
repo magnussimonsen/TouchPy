@@ -8,6 +8,7 @@ from typing import List
 from ..models import Exercise
 from .typing_view import TypingView
 from .about_view import AboutView
+from .finger_map_view import FingerMapView
 
 
 class MenuView(Screen):
@@ -16,6 +17,7 @@ class MenuView(Screen):
     BINDINGS = [
         Binding("q", "quit", "Quit"),
         Binding("enter", "select_exercise", "Select", show=True),
+        Binding("f", "show_map", "Finger Map", show=True),
         Binding("a", "show_about", "About", show=True),
     ]
     
@@ -75,20 +77,10 @@ class MenuView(Screen):
         
         # Add exercise items
         for exercise in self.exercises:
-            item = ListItem(Static(f" {exercise.title}"))
+            item = ListItem(Static(f"🔤 {exercise.title}"))
             item.exercise = exercise  # Store exercise reference
             item.is_about = False
             list_view.append(item)
-        
-        # Add separator and About item at the bottom
-        separator = ListItem(Static("─" * 40))
-        separator.is_about = False
-        separator.is_separator = True
-        list_view.append(separator)
-        
-        about_item = ListItem(Static("About TouchPy"))
-        about_item.is_about = True
-        list_view.append(about_item)
         
         # Focus the list view
         list_view.focus()
@@ -105,6 +97,9 @@ class MenuView(Screen):
         if hasattr(selected_item, 'is_about') and selected_item.is_about:
             about_screen = AboutView()
             self.app.push_screen(about_screen)
+        # Check if it's the Finger Map item
+        elif hasattr(selected_item, 'is_map') and selected_item.is_map:
+            self.action_show_map()
         # Otherwise it's an exercise
         elif hasattr(selected_item, 'exercise'):
             exercise = selected_item.exercise
@@ -127,6 +122,9 @@ class MenuView(Screen):
             if hasattr(selected_item, 'is_about') and selected_item.is_about:
                 about_screen = AboutView()
                 self.app.push_screen(about_screen)
+            # Check if it's the Finger Map item
+            elif hasattr(selected_item, 'is_map') and selected_item.is_map:
+                self.action_show_map()
             # Otherwise it's an exercise
             elif hasattr(selected_item, 'exercise'):
                 exercise = selected_item.exercise
@@ -138,6 +136,11 @@ class MenuView(Screen):
         """Show the About screen."""
         about_screen = AboutView()
         self.app.push_screen(about_screen)
+
+    def action_show_map(self) -> None:
+        """Show the Finger Map screen."""
+        map_screen = FingerMapView()
+        self.app.push_screen(map_screen)
     
     def action_quit(self) -> None:
         """Quit the application."""

@@ -6,10 +6,7 @@ NORWEGIAN_LAYOUT = r"""
   |  Q  |  W  |  E  |  R  |  T  |  Y  |  U  |  I  |  O  |  P  |  Å  |  ¨  |
   |  A  |  S  |  D  |  F  |  G  |  H  |  J  |  K  |  L  |  Ø  |  Æ  |  '  |
   |  <  |  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  |  -  |
-<<<<<<< HEAD
                     |           SPACE           |
-=======
->>>>>>> 029f98bb93dbf9ff3540bc42783bb13ec868b76d
 """
 
 ENGLISH_LAYOUT = r"""
@@ -17,10 +14,7 @@ ENGLISH_LAYOUT = r"""
   |  Q  |  W  |  E  |  R  |  T  |  Y  |  U  |  I  |  O  |  P  |  [  |  ]  |
   |  A  |  S  |  D  |  F  |  G  |  H  |  J  |  K  |  L  |  ;  |  '  |  \  |
   |  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  |  /  |
-<<<<<<< HEAD
                     |           SPACE           |
-=======
->>>>>>> 029f98bb93dbf9ff3540bc42783bb13ec868b76d
 """
 
 def get_layout(name, highlight_key=None, error_keys=None):
@@ -34,7 +28,6 @@ def get_layout(name, highlight_key=None, error_keys=None):
     
     if error_keys:
         for char in error_keys:
-<<<<<<< HEAD
             if not char:
                 continue
             
@@ -49,10 +42,6 @@ def get_layout(name, highlight_key=None, error_keys=None):
             if not char.strip():
                 continue
 
-=======
-            if not char or not char.strip():
-                continue
->>>>>>> 029f98bb93dbf9ff3540bc42783bb13ec868b76d
             char = char.upper()
             escaped_char = re.escape(char)
             # Find key surrounded by spaces
@@ -62,7 +51,6 @@ def get_layout(name, highlight_key=None, error_keys=None):
             except Exception:
                 pass
 
-<<<<<<< HEAD
     if highlight_key:
         # Handle space highlight specifically
         if highlight_key == ' ':
@@ -89,25 +77,5 @@ def get_layout(name, highlight_key=None, error_keys=None):
             except Exception:
                 # If regex fails for some reason, just return unhighlighted text
                 pass
-=======
-    if highlight_key and highlight_key.strip():
-        # Find the key to highlight
-        # We look for the character surrounded by spaces to ensure we match the key cap
-        char = highlight_key.upper()
-        
-        # Determine the regex pattern based on the character
-        # We want to match "  CHAR  " pattern which is common in the layout
-        # Escape the char to handle special regex characters safely
-        escaped_char = re.escape(char)
-        pattern = f"(?<=  ){escaped_char}(?=  )"
-        
-        # Apply the style to the matches
-        # We use a bright blue color for visibility
-        try:
-            text.highlight_regex(pattern, "bold white on blue")
-        except Exception:
-            # If regex fails for some reason, just return unhighlighted text
-            pass
->>>>>>> 029f98bb93dbf9ff3540bc42783bb13ec868b76d
             
     return text
