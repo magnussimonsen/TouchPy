@@ -140,7 +140,7 @@ class TypingView(Screen):
     
     def _format_stats(self) -> str:
         """Format the stats display."""
-        return f"⏱️  Time: {self.elapsed_time:.1f}s  |  ⚡ WPM: {self.wpm:.1f}  |  ❌ Mistakes: {self.mistakes}  |  📝 Lines Left: {self.lines_left}  |  ESC: Quit"
+        return f"⏱️  Time: {self.elapsed_time:.1f}s  |  ⚡ WPM: {self.wpm:.1f}  |  ❌ Mistakes: {self.mistakes}  | Lines Left: {self.lines_left}  |  ESC: Quit"
     
     def _render_target_text(self) -> Text:
         """Render the target text with highlighting."""
