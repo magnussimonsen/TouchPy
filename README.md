@@ -8,7 +8,7 @@ A beautiful terminal-based touch typing trainer built with Python, Textual, and 
 ![TouchPy Typing View](screenshots/TouchPy-2.png)
 ![TouchPy Typing View](screenshots/TouchPy-3.png)
 ![TouchPy Typing View](screenshots/TouchPy-4.png)
-
+dfsdf
 ## Features
 
 - 🎨 **Beautiful Terminal UI** - Modern, colorful interface using Textual
