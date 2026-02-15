@@ -106,7 +106,7 @@ class SummaryView(Screen):
         accuracy = self.results['accuracy']
         
         if accuracy < 80:
-            return "Focus on accuracy! Speed will come with practice."
+            return "Focus on accuracy, not speed. Speed will come with practice."
         elif wpm < 20:
             return "Good start! Keep practicing to build speed."
         elif wpm < 40:
