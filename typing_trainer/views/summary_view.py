@@ -66,6 +66,7 @@ class SummaryView(Screen):
                 - accuracy: Accuracy percentage
                 - elapsed_time: Time taken in seconds
                 - mistakes: Number of typing mistakes
+                - top_mistake_letters: List of tuples (char, count) for top 3 mistakes
         """
         super().__init__()
         self.results = results
@@ -94,6 +95,16 @@ class SummaryView(Screen):
                 f"❌ Mistakes: {self.results.get('mistakes', 0)}",
                 classes="stat"
             )
+            
+            # Display top 3 mistake letters if available
+            top_mistakes = self.results.get('top_mistake_letters', [])
+            if top_mistakes:
+                mistake_str = ", ".join([f"'{char if char != ' ' else 'SPACE'}' ({count})" for char, count in top_mistakes])
+                yield Static(
+                    f"🔤 Most mistakes: {mistake_str}",
+                    classes="stat"
+                )
+            
             yield Static("", classes="stat")  # Spacer
             yield Static(self._get_performance_message(), id="message")
             yield Button("Back to Menu", variant="success", id="menu_button")

@@ -330,13 +330,23 @@ class TypingView(Screen):
             final_text
         )
         
+        # Get top 3 most mistaken letters
+        sorted_mistakes = sorted(self.char_mistakes.items(), key=lambda x: x[1], reverse=True)
+        top_mistakes = []
+        for char, count in sorted_mistakes:
+            if char and (char == ' ' or char.strip()):
+                top_mistakes.append((char, count))
+                if len(top_mistakes) >= 3:
+                    break
+        
         # Switch to summary view
         results = {
             "exercise": self.exercise,
             "wpm": self.wpm,
             "accuracy": accuracy,
             "elapsed_time": self.elapsed_time,
-            "mistakes": self.mistakes
+            "mistakes": self.mistakes,
+            "top_mistake_letters": top_mistakes
         }
         summary_screen = SummaryView(results)
         self.app.push_screen(summary_screen)
