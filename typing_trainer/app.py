@@ -68,8 +68,17 @@ class TypingTrainerApp(App):
 
 def main():
     """Entry point for the typing trainer application."""
-    app = TypingTrainerApp()
-    app.run()
+    try:
+        # Add a startup message to verify the app is at least trying to start
+        print("Starting Touch Typing Trainer...")
+        app = TypingTrainerApp()
+        app.run()
+    except Exception as e:
+        print(f"\nFailed to start application: {e}")
+        import traceback
+        traceback.print_exc()
+        input("\nPress Enter to exit...")
+        raise
 
 
 if __name__ == "__main__":

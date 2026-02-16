@@ -1,8 +1,0 @@
-Language: Norwegian
-Norske byer og steder
-oslo bergen trondheim tromsø stavanger
-kristiansand drammen fredrikstad bodø
-ålesund larvik sandefjord hamar lillehammer
-molde sarpsborg skien arendal moss
-longyearbyen vardø hammerfest kirkenes
-svalbard lofoten hardangervidda preikestolen

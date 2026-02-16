@@ -49,8 +49,9 @@ pyz = PYZ(a.pure)
 exe = EXE(
     pyz,
     a.scripts,
+    a.binaries,
+    a.datas,
     [],
-    exclude_binaries=True,
     name='TouchPy',
     debug=False,
     bootloader_ignore_signals=False,
@@ -65,12 +66,13 @@ exe = EXE(
     icon=None,  # You can add an .ico file here later
 )
 
-coll = COLLECT(
-    exe,
-    a.binaries,
-    a.datas,
-    strip=False,
-    upx=True,
-    upx_exclude=[],
-    name='TouchPy',
-)
+# Folder distribution (commented out - using onefile instead)
+# coll = COLLECT(
+#     exe,
+#     a.binaries,
+#     a.datas,
+#     strip=False,
+#     upx=True,
+#     upx_exclude=[],
+#     name='TouchPy',
+# )

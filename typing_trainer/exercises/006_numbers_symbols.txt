@@ -1,6 +1,0 @@
-Language: English
-Numbers and Symbols
-123 456 789 0 123 456 789 0 123 456 789 0
-!@# $%^ &*() !@# $%^ &*() !@# $%^ &*()
-The year 2026 is here! Amazing progress @ 100% speed.
-Email: user@example.com | Price: $49.99 | Rate: 95%
