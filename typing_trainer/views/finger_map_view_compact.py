@@ -20,18 +20,12 @@ FINGER_MAP_ENGLISH = """
 │[magenta]            [/magenta] │[magenta]  Z [/magenta] │[yellow]  X  [/yellow]│[cyan]  C  [/cyan]│[green]  V  [/green]│[green]  B  [/green]│[green]  N  [/green]│[green]  M  [/green]│[cyan]  <  [/cyan]│[yellow]  >  [/yellow]│[magenta]  ? [/magenta] │[magenta]            [/magenta] │
 │[magenta]    SHIFT   [/magenta] │[magenta]  z [/magenta] │[yellow]  x  [/yellow]│[cyan]  c  [/cyan]│[green]  v  [/green]│[green]  b  [/green]│[green]  n  [/green]│[green]  m  [/green]│[cyan]  ,  [/cyan]│[yellow]  .  [/yellow]│[magenta]  / [/magenta] │[magenta]    SHIFT   [/magenta] │
 └─────────────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────────────┘
-                    FINGER PLACEMENT GUIDE:
         LEFT HAND                          RIGHT HAND
         ─────────                          ──────────
         [magenta]Pinky[/magenta]:  A                          [magenta]Pinky[/magenta]:  ;
         [yellow]Ring[/yellow]:   S                          [yellow]Ring[/yellow]:   L
         [cyan]Middle[/cyan]: D                          [cyan]Middle[/cyan]: K
         [green]Index[/green]:  F (has bump)               [green]Index[/green]:  J (has bump)
-        Thumbs: SPACE BAR
-        ┌─────────────────────────────────────────────────┐
-        │  F and J keys have small bumps to help you      │
-        │  find the home row position without looking.    │
-        └─────────────────────────────────────────────────┘
 """
 
 FINGER_MAP_NORWEGIAN = """
@@ -48,18 +42,12 @@ FINGER_MAP_NORWEGIAN = """
 │[magenta]            [/magenta] │[magenta]  Z [/magenta] │[yellow]  X  [/yellow]│[cyan]  C  [/cyan]│[green]  V  [/green]│[green]  B  [/green]│[green]  N  [/green]│[green]  M  [/green]│[cyan]  ;  [/cyan]│[yellow]  :  [/yellow]│[magenta]  - [/magenta] │[magenta]             [/magenta] │
 │[magenta]    SHIFT   [/magenta] │[magenta]  z [/magenta] │[yellow]  x  [/yellow]│[cyan]  c  [/cyan]│[green]  v  [/green]│[green]  b  [/green]│[green]  n  [/green]│[green]  m  [/green]│[cyan]  ,  [/cyan]│[yellow]  .  [/yellow]│[magenta]  - [/magenta] │[magenta]    SHIFT    [/magenta] │
 └─────────────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴──────────────┘
-                    PLASSERING AV FINGRE:
         VENSTRE HÅND                       HØYRE HÅND
         ────────────                       ──────────
         [magenta]Lillefinger[/magenta]:  A                    [magenta]Lillefinger[/magenta]:  ;
         [yellow]Ringfinger[/yellow]:   S                    [yellow]Ringfinger[/yellow]:   L
         [cyan]Langfinger[/cyan]:   D                    [cyan]Langfinger[/cyan]:   K
         [green]Pekefinger[/green]:   F (har markering)    [green]Pekefinger[/green]:   J (har markering)
-        Tommelfingre: MELLOMROMSTAST
-        ┌─────────────────────────────────────────────────┐
-        │  F- og J-tastene har små markeringer for å      │
-        │  hjelpe deg finne grunnposisjonen uten å se.    │
-        └─────────────────────────────────────────────────┘
 """
 
 class FingerMapView(Screen):

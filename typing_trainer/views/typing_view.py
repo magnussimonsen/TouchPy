@@ -18,6 +18,7 @@ class TypingView(Screen):
     
     BINDINGS = [
         Binding("escape", "back_to_menu", "Menu"),
+        Binding("f1", "toggle_finger_map", "Toggle Finger Map"),
     ]
     
     CSS = """
@@ -26,19 +27,17 @@ class TypingView(Screen):
     }
     
     #stats {
-        width: 100%;
+        width: 90%;
         height: 3;
-        content-align: center middle;
         background: $panel;
         border: solid $primary;
-        margin: 1 0;
+        margin: 0 1;
     }
 
     #keyboard_layout {
         width: 100%;
         height: auto;
-        content-align: center middle;
-        margin: 1 0;
+        margin: 0 1;
     }
     
     #target_text_container {
@@ -47,7 +46,7 @@ class TypingView(Screen):
         padding: 1;
         background: $surface;
         border: solid $accent;
-        margin: 1 0;
+        margin: 0 1;
     }
     
     #target_text {
@@ -56,7 +55,7 @@ class TypingView(Screen):
     
     #input_container {
         width: 90%;
-        margin: 1 0;
+        margin: 0 1;
     }
     
     TextArea {
@@ -64,6 +63,7 @@ class TypingView(Screen):
         height: 3;
         border: solid $primary;
         background: $surface;
+        margin: 0 1;
     }
     """
     
@@ -72,6 +72,7 @@ class TypingView(Screen):
     wpm = reactive(0.0)
     mistakes = reactive(0)
     lines_left = reactive(0)
+    show_finger_map = reactive(True)
     
     def __init__(self, exercise: Exercise):
         """Initialize the typing view.
@@ -118,7 +119,7 @@ class TypingView(Screen):
         stats_text = self._format_stats()
         yield Static(stats_text, id="stats")
         
-        # Keyboard Layout
+        # Keyboard Layout (Finger Map) - always create it
         layout_text = get_layout(self.exercise.layout)
         yield Static(layout_text, id="keyboard_layout")
 
@@ -350,6 +351,12 @@ class TypingView(Screen):
         }
         summary_screen = SummaryView(results)
         self.app.push_screen(summary_screen)
+    
+    def action_toggle_finger_map(self) -> None:
+        """Toggle the finger map display."""
+        self.show_finger_map = not self.show_finger_map
+        keyboard_widget = self.query_one("#keyboard_layout", Static)
+        keyboard_widget.display = self.show_finger_map
     
     def action_back_to_menu(self) -> None:
         """Return to the menu."""
