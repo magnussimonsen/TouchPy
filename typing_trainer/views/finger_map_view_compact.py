@@ -20,8 +20,8 @@ FINGER_MAP_ENGLISH = """
 │[magenta]            [/magenta] │[magenta]  Z [/magenta] │[yellow]  X  [/yellow]│[cyan]  C  [/cyan]│[green]  V  [/green]│[green]  B  [/green]│[green]  N  [/green]│[green]  M  [/green]│[cyan]  <  [/cyan]│[yellow]  >  [/yellow]│[magenta]  ? [/magenta] │[magenta]            [/magenta] │
 │[magenta]    SHIFT   [/magenta] │[magenta]  z [/magenta] │[yellow]  x  [/yellow]│[cyan]  c  [/cyan]│[green]  v  [/green]│[green]  b  [/green]│[green]  n  [/green]│[green]  m  [/green]│[cyan]  ,  [/cyan]│[yellow]  .  [/yellow]│[magenta]  / [/magenta] │[magenta]    SHIFT   [/magenta] │
 └─────────────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────────────┘
-        LEFT HAND                          RIGHT HAND
-        ─────────                          ──────────
+        LEFT HAND RESTING POSITION         RIGHT HAND RESTING POSITION
+        ──────────────────────────         ───────────────────────────
         [magenta]Pinky[/magenta]:  A                          [magenta]Pinky[/magenta]:  ;
         [yellow]Ring[/yellow]:   S                          [yellow]Ring[/yellow]:   L
         [cyan]Middle[/cyan]: D                          [cyan]Middle[/cyan]: K
@@ -42,8 +42,8 @@ FINGER_MAP_NORWEGIAN = """
 │[magenta]            [/magenta] │[magenta]  Z [/magenta] │[yellow]  X  [/yellow]│[cyan]  C  [/cyan]│[green]  V  [/green]│[green]  B  [/green]│[green]  N  [/green]│[green]  M  [/green]│[cyan]  ;  [/cyan]│[yellow]  :  [/yellow]│[magenta]  - [/magenta] │[magenta]             [/magenta] │
 │[magenta]    SHIFT   [/magenta] │[magenta]  z [/magenta] │[yellow]  x  [/yellow]│[cyan]  c  [/cyan]│[green]  v  [/green]│[green]  b  [/green]│[green]  n  [/green]│[green]  m  [/green]│[cyan]  ,  [/cyan]│[yellow]  .  [/yellow]│[magenta]  - [/magenta] │[magenta]    SHIFT    [/magenta] │
 └─────────────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴──────────────┘
-        VENSTRE HÅND                       HØYRE HÅND
-        ────────────                       ──────────
+        VENSTRE HÅND HVILEPOSISJON         HØYRE HÅND HVILEPOSISJON
+        ──────────────────────────         ────────────────────────
         [magenta]Lillefinger[/magenta]:  A                    [magenta]Lillefinger[/magenta]:  ;
         [yellow]Ringfinger[/yellow]:   S                    [yellow]Ringfinger[/yellow]:   L
         [cyan]Langfinger[/cyan]:   D                    [cyan]Langfinger[/cyan]:   K
