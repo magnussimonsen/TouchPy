@@ -30,17 +30,17 @@ class MenuView(Screen):
     
     #title {
         width: 100%;
-        content-align: center middle;
+        content-align: left middle;
         text-style: bold;
         color: $accent;
-        margin: 1 0;
+        margin: 0 0;
     }
     
     #instructions {
         width: 100%;
-        content-align: center middle;
+        content-align: left middle;
         color: $text-muted;
-        margin: 1 0;
+        margin: 0 0;
     }
     
     ListView {
@@ -48,7 +48,7 @@ class MenuView(Screen):
         height: auto;
         max-height: 20;
         border: solid $primary;
-        margin: 1 0;
+        margin: 0 0;
     }
     
     ListItem {
