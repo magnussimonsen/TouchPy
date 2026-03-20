@@ -688,3 +688,307 @@ This prompt provides comprehensive specifications for building a professional to
 7. **Interactive finger map** showing proper hand positioning
 
 Follow this specification step-by-step to build a complete, production-ready typing trainer that combines educational value with modern UI/UX design.
+
+---
+
+## Appendix: Complete Keyboard Layout Data
+
+### English Keyboard Layout (Full Color-Coded)
+
+Use this as reference for implementing the finger map display in Flutter. The color codes indicate which finger should be used for each key:
+- **Magenta**: Pinky fingers (both left and right)
+- **Yellow**: Ring fingers
+- **Cyan**: Middle fingers
+- **Green**: Index fingers
+
+```
+┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────────┐
+│  ~  │  !  │  @  │  #  │  $  │  %  │  ^  │  &  │  *  │  (  │  )  │  _  │  +  │         │
+│  `  │  1  │  2  │  3  │  4  │  5  │  6  │  7  │  8  │  9  │  0  │  -  │  =  │   BKSP  │
+├─────┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──────┤
+│        │  Q  │  W  │  E  │  R  │  T  │  Y  │  U  │  I  │  O  │  P  │  {  │  }  │      │
+│  TAB   │  q  │  w  │  e  │  r  │  t  │  y  │  u  │  i  │  o  │  p  │  [  │  ]  │   \  │
+├────────┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴──────┤
+│          │  A  │  S  │  D  │  F  │  G  │  H  │  J  │  K  │  L  │  :  │  "  │          │
+│   CAPS   │  a  │  s  │  d  │  f  │  g  │  h  │  j  │  k  │  l  │  ;  │  '  │  ENTER   │
+├──────────┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──────────┤
+│             │  Z  │  X  │  C  │  V  │  B  │  N  │  M  │  <  │  >  │  ?  │             │
+│    SHIFT    │  z  │  x  │  c  │  v  │  b  │  n  │  m  │  ,  │  .  │  /  │    SHIFT    │
+└─────────────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────────────┘
+                                    SPACE BAR
+
+        LEFT HAND RESTING POSITION         RIGHT HAND RESTING POSITION
+        ──────────────────────────         ───────────────────────────
+        Pinky:  A                          Pinky:  ;
+        Ring:   S                          Ring:   L
+        Middle: D                          Middle: K
+        Index:  F (has bump)               Index:  J (has bump)
+```
+
+**Finger Assignment Map for English:**
+```dart
+// Map each character to a color for finger identification
+final Map<String, Color> englishFingerColors = {
+  // Left Pinky (Magenta)
+  '`': Colors.pink.shade300,
+  '~': Colors.pink.shade300,
+  '1': Colors.pink.shade300,
+  '!': Colors.pink.shade300,
+  'q': Colors.pink.shade300,
+  'Q': Colors.pink.shade300,
+  'a': Colors.pink.shade300,
+  'A': Colors.pink.shade300,
+  'z': Colors.pink.shade300,
+  'Z': Colors.pink.shade300,
+  
+  // Left Ring (Yellow)
+  '2': Colors.yellow.shade700,
+  '@': Colors.yellow.shade700,
+  'w': Colors.yellow.shade700,
+  'W': Colors.yellow.shade700,
+  's': Colors.yellow.shade700,
+  'S': Colors.yellow.shade700,
+  'x': Colors.yellow.shade700,
+  'X': Colors.yellow.shade700,
+  
+  // Left Middle (Cyan)
+  '3': Colors.cyan.shade600,
+  '#': Colors.cyan.shade600,
+  'e': Colors.cyan.shade600,
+  'E': Colors.cyan.shade600,
+  'd': Colors.cyan.shade600,
+  'D': Colors.cyan.shade600,
+  'c': Colors.cyan.shade600,
+  'C': Colors.cyan.shade600,
+  
+  // Left Index (Green)
+  '4': Colors.green.shade600,
+  '\$': Colors.green.shade600,
+  '5': Colors.green.shade600,
+  '%': Colors.green.shade600,
+  'r': Colors.green.shade600,
+  'R': Colors.green.shade600,
+  't': Colors.green.shade600,
+  'T': Colors.green.shade600,
+  'f': Colors.green.shade600,
+  'F': Colors.green.shade600,
+  'g': Colors.green.shade600,
+  'G': Colors.green.shade600,
+  'v': Colors.green.shade600,
+  'V': Colors.green.shade600,
+  'b': Colors.green.shade600,
+  'B': Colors.green.shade600,
+  
+  // Right Index (Green)
+  '6': Colors.green.shade600,
+  '^': Colors.green.shade600,
+  '7': Colors.green.shade600,
+  '&': Colors.green.shade600,
+  'y': Colors.green.shade600,
+  'Y': Colors.green.shade600,
+  'u': Colors.green.shade600,
+  'U': Colors.green.shade600,
+  'h': Colors.green.shade600,
+  'H': Colors.green.shade600,
+  'j': Colors.green.shade600,
+  'J': Colors.green.shade600,
+  'n': Colors.green.shade600,
+  'N': Colors.green.shade600,
+  'm': Colors.green.shade600,
+  'M': Colors.green.shade600,
+  
+  // Right Middle (Cyan)
+  '8': Colors.cyan.shade600,
+  '*': Colors.cyan.shade600,
+  'i': Colors.cyan.shade600,
+  'I': Colors.cyan.shade600,
+  'k': Colors.cyan.shade600,
+  'K': Colors.cyan.shade600,
+  ',': Colors.cyan.shade600,
+  '<': Colors.cyan.shade600,
+  
+  // Right Ring (Yellow)
+  '9': Colors.yellow.shade700,
+  '(': Colors.yellow.shade700,
+  'o': Colors.yellow.shade700,
+  'O': Colors.yellow.shade700,
+  'l': Colors.yellow.shade700,
+  'L': Colors.yellow.shade700,
+  '.': Colors.yellow.shade700,
+  '>': Colors.yellow.shade700,
+  
+  // Right Pinky (Magenta)
+  '0': Colors.pink.shade300,
+  ')': Colors.pink.shade300,
+  '-': Colors.pink.shade300,
+  '_': Colors.pink.shade300,
+  '=': Colors.pink.shade300,
+  '+': Colors.pink.shade300,
+  'p': Colors.pink.shade300,
+  'P': Colors.pink.shade300,
+  '[': Colors.pink.shade300,
+  '{': Colors.pink.shade300,
+  ']': Colors.pink.shade300,
+  '}': Colors.pink.shade300,
+  '\\': Colors.pink.shade300,
+  '|': Colors.pink.shade300,
+  ';': Colors.pink.shade300,
+  ':': Colors.pink.shade300,
+  '\'': Colors.pink.shade300,
+  '"': Colors.pink.shade300,
+  '/': Colors.pink.shade300,
+  '?': Colors.pink.shade300,
+};
+```
+
+### Norwegian Keyboard Layout (Full Color-Coded)
+
+```
+┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬──────────┐
+│  §  │  !  │  "  │  #  │  ¤  │  %  │  &  │  /  │  (  │  )  │  =  │  ?  │  `  │          │
+│  |  │  1  │  2  │  3  │  4  │  5  │  6  │  7  │  8  │  9  │  0  │  +  │  \  │   BKSP   │
+├─────┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬───────┤
+│        │  Q  │  W  │  E  │  R  │  T  │  Y  │  U  │  I  │  O  │  P  │  Å  │  ^  │       │
+│  TAB   │  q  │  w  │  e  │  r  │  t  │  y  │  u  │  i  │  o  │  p  │  å  │ ¨ ~ │ ENTER │
+├────────┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┐     │
+│          │  A  │  S  │  D  │  F  │  G  │  H  │  J  │  K  │  L  │  Ø  │  Æ  │  *  │     │
+│   CAPS   │  a  │  s  │  d  │  f  │  g  │  h  │  j  │  k  │  l  │  ø  │  æ  │  '  │     │
+├──────────┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴─────┴─────┤
+│             │  Z  │  X  │  C  │  V  │  B  │  N  │  M  │  ;  │  :  │  _  │              │
+│    SHIFT    │  z  │  x  │  c  │  v  │  b  │  n  │  m  │  ,  │  .  │  -  │    SHIFT     │
+└─────────────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴──────────────┘
+                              MELLOMROMSTAST (SPACE BAR)
+
+        VENSTRE HÅND HVILEPOSISJON         HØYRE HÅND HVILEPOSISJON
+        ──────────────────────────         ────────────────────────
+        Lillefinger:  A                    Lillefinger:  Ø
+        Ringfinger:   S                    Ringfinger:   L
+        Langfinger:   D                    Langfinger:   K
+        Pekefinger:   F (har markering)    Pekefinger:   J (har markering)
+```
+
+**Finger Assignment Map for Norwegian:**
+```dart
+// Map each character to a color for finger identification (Norwegian layout)
+final Map<String, Color> norwegianFingerColors = {
+  // Left Pinky (Magenta) 
+  '|': Colors.pink.shade300,
+  '§': Colors.pink.shade300,
+  '1': Colors.pink.shade300,
+  '!': Colors.pink.shade300,
+  'q': Colors.pink.shade300,
+  'Q': Colors.pink.shade300,
+  'a': Colors.pink.shade300,
+  'A': Colors.pink.shade300,
+  'z': Colors.pink.shade300,
+  'Z': Colors.pink.shade300,
+  
+  // Left Ring (Yellow)
+  '2': Colors.yellow.shade700,
+  '"': Colors.yellow.shade700,
+  'w': Colors.yellow.shade700,
+  'W': Colors.yellow.shade700,
+  's': Colors.yellow.shade700,
+  'S': Colors.yellow.shade700,
+  'x': Colors.yellow.shade700,
+  'X': Colors.yellow.shade700,
+  
+  // Left Middle (Cyan)
+  '3': Colors.cyan.shade600,
+  '#': Colors.cyan.shade600,
+  'e': Colors.cyan.shade600,
+  'E': Colors.cyan.shade600,
+  'd': Colors.cyan.shade600,
+  'D': Colors.cyan.shade600,
+  'c': Colors.cyan.shade600,
+  'C': Colors.cyan.shade600,
+  
+  // Left Index (Green)
+  '4': Colors.green.shade600,
+  '¤': Colors.green.shade600,
+  '5': Colors.green.shade600,
+  '%': Colors.green.shade600,
+  'r': Colors.green.shade600,
+  'R': Colors.green.shade600,
+  't': Colors.green.shade600,
+  'T': Colors.green.shade600,
+  'f': Colors.green.shade600,
+  'F': Colors.green.shade600,
+  'g': Colors.green.shade600,
+  'G': Colors.green.shade600,
+  'v': Colors.green.shade600,
+  'V': Colors.green.shade600,
+  'b': Colors.green.shade600,
+  'B': Colors.green.shade600,
+  
+  // Right Index (Green)
+  '6': Colors.green.shade600,
+  '&': Colors.green.shade600,
+  '7': Colors.green.shade600,
+  '/': Colors.green.shade600,
+  'y': Colors.green.shade600,
+  'Y': Colors.green.shade600,
+  'u': Colors.green.shade600,
+  'U': Colors.green.shade600,
+  'h': Colors.green.shade600,
+  'H': Colors.green.shade600,
+  'j': Colors.green.shade600,
+  'J': Colors.green.shade600,
+  'n': Colors.green.shade600,
+  'N': Colors.green.shade600,
+  'm': Colors.green.shade600,
+  'M': Colors.green.shade600,
+  
+  // Right Middle (Cyan)
+  '8': Colors.cyan.shade600,
+  '(': Colors.cyan.shade600,
+  'i': Colors.cyan.shade600,
+  'I': Colors.cyan.shade600,
+  'k': Colors.cyan.shade600,
+  'K': Colors.cyan.shade600,
+  ',': Colors.cyan.shade600,
+  ';': Colors.cyan.shade600,
+  
+  // Right Ring (Yellow)
+  '9': Colors.yellow.shade700,
+  ')': Colors.yellow.shade700,
+  'o': Colors.yellow.shade700,
+  'O': Colors.yellow.shade700,
+  'l': Colors.yellow.shade700,
+  'L': Colors.yellow.shade700,
+  '.': Colors.yellow.shade700,
+  ':': Colors.yellow.shade700,
+  
+  // Right Pinky (Magenta)
+  '0': Colors.pink.shade300,
+  '=': Colors.pink.shade300,
+  '+': Colors.pink.shade300,
+  '?': Colors.pink.shade300,
+  '\\': Colors.pink.shade300,
+  '`': Colors.pink.shade300,
+  'p': Colors.pink.shade300,
+  'P': Colors.pink.shade300,
+  'å': Colors.pink.shade300,
+  'Å': Colors.pink.shade300,
+  'ø': Colors.pink.shade300,
+  'Ø': Colors.pink.shade300,
+  'æ': Colors.pink.shade300,
+  'Æ': Colors.pink.shade300,
+  '\'': Colors.pink.shade300,
+  '*': Colors.pink.shade300,
+  '-': Colors.pink.shade300,
+  '_': Colors.pink.shade300,
+  '¨': Colors.pink.shade300,
+  '^': Colors.pink.shade300,
+  '~': Colors.pink.shade300,
+};
+```
+
+### Implementation Notes for Finger Maps
+
+1. **Display Method**: Use monospace font (e.g., `Courier New`, `Consolas`) for proper alignment
+2. **Character Highlighting**: Overlay colored backgrounds on specific keys
+3. **Next Key Highlight**: Blue background (`Colors.blue.shade500`)
+4. **Error Keys Highlight**: Red background (`Colors.red.shade700`)
+5. **Priority**: Next key highlight takes precedence over error highlights
+6. **Space Bar**: Spans multiple columns, handle separately in layout code
