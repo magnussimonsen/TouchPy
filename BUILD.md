@@ -12,7 +12,7 @@ This will:
 
 1. Install PyInstaller if needed
 2. Build the executable
-3. Create `dist\TouchPy\TouchPy.exe`
+3. Create `dist\TouchPy.exe`
 
 ## Manual Build
 
@@ -32,14 +32,14 @@ If you prefer to build manually:
 
 3. **Find your executable:**
    ```
-   dist\TouchPy\TouchPy.exe
+   dist\TouchPy.exe
    ```
 
 ## Distribution
 
 To distribute your app:
 
-1. Copy the entire `dist\TouchPy` folder
+1. Copy `dist\TouchPy.exe`
 2. Share it with others
 3. Users can run `TouchPy.exe` directly (no Python installation needed!)
 
@@ -50,7 +50,7 @@ Users can add their own exercises **without rebuilding**:
 1. Create an `exercises` folder next to `TouchPy.exe`:
 
    ```
-   dist\TouchPy\
+   dist\
    ├── TouchPy.exe
    └── exercises\          ← Create this folder
        └── 018_custom.txt
@@ -72,34 +72,10 @@ See [EXERCISES_README.md](EXERCISES_README.md) for detailed instructions.
    icon=None,  # Change to icon='your_icon.ico'
    ```
 
-### Create a Single-File Executable
+### Single-File Executable
 
-Edit `TouchPy.spec` and change the `EXE` section:
-
-```python
-exe = EXE(
-    pyz,
-    a.scripts,
-    a.binaries,      # Add this
-    a.datas,         # Add this
-    [],
-    name='TouchPy',
-    debug=False,
-    bootloader_ignore_signals=False,
-    strip=False,
-    upx=True,
-    upx_exclude=[],
-    runtime_tmpdir=None,
-    console=True,
-    disable_windowed_traceback=False,
-    argv_emulation=False,
-    target_arch=None,
-    codesign_identity=None,
-    entitlements_file=None,
-)
-```
-
-Then remove the `COLLECT` section at the bottom.
+The current `TouchPy.spec` already builds a single-file executable at
+`dist\TouchPy.exe`. No additional configuration is needed.
 
 ## Troubleshooting
 
@@ -130,5 +106,5 @@ Then remove the `COLLECT` section at the bottom.
 
 - The built executable includes everything needed to run
 - No Python installation required on target machines
-- Exercise files are bundled into the executable
+- Built-in exercise files are bundled into the executable
 - Users can still add custom exercises by placing `.txt` files in an `exercises` folder next to the `.exe`

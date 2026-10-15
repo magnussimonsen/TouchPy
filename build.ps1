@@ -31,13 +31,13 @@ if ($LASTEXITCODE -eq 0) {
     Write-Host "=== Build Complete! ===" -ForegroundColor Green
     Write-Host ""
     Write-Host "Your executable is located at:" -ForegroundColor Cyan
-    Write-Host "  dist\TouchPy\TouchPy.exe" -ForegroundColor White
+    Write-Host "  dist\TouchPy.exe" -ForegroundColor White
     Write-Host ""
     Write-Host "To run the app:" -ForegroundColor Yellow
-    Write-Host "  cd dist\TouchPy" -ForegroundColor White
+    Write-Host "  cd dist" -ForegroundColor White
     Write-Host "  .\TouchPy.exe" -ForegroundColor White
     Write-Host ""
-    Write-Host "You can distribute the entire 'dist\TouchPy' folder." -ForegroundColor Cyan
+    Write-Host "You can distribute 'dist\TouchPy.exe'." -ForegroundColor Cyan
 } else {
     Write-Host ""
     Write-Host "Build failed! Check the error messages above." -ForegroundColor Red
