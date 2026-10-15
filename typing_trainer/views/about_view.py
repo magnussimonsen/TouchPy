@@ -72,8 +72,7 @@ class AboutView(Screen):
             # Authors section
             yield Static("Authors", classes="section_header")
             yield Static(
-                "Magnus Simonsen & Claude Sonnet\n"
-                "GitHub: https://github.com/magnussimonsen/TouchPy",
+                "Magnus Simonsen & Claude",
                 classes="section_text about_section"
             )
             

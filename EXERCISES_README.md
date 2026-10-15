@@ -2,6 +2,13 @@
 
 TouchPy støtter egendefinerte treningsfiler som kan legges til uten å bygge programmet på nytt.
 
+## Innebygd øvelse: vanlige norske ord
+
+Øvelsen `017_norwegian_common_words.txt` inneholder de 1 000 høyest rangerte
+alfabetiske ordene i [FrequencyWords-listen for norsk (OpenSubtitles 2018)](https://github.com/hermitdave/FrequencyWords/blob/master/content/2018/no/no_50k.txt).
+Ordlisten er laget av hermitdave og innholdet er lisensiert under
+[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
 ## For brukere av .exe-filen
 
 1. **Opprett en mappe** kalt `exercises` ved siden av `TouchPy.exe`:

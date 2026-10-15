@@ -16,6 +16,7 @@ A beautiful terminal-based touch typing trainer built with Python, Textual, and 
 - 🎯 **Visual Highlighting** - Correct characters in green, mistakes in red
 - ❌ **Mistake Tracking** - See how many errors you make in real-time
 - 📚 **Multiple Exercises** - 17+ built-in exercises including Norwegian texts
+- 🇳🇴 **Common Norwegian Words** - Practice 1,000 frequently used Norwegian words
 - 🇳🇴 **Norwegian Support** - Special exercises for æ, ø, å and Norwegian literature
 - ➕ **Custom Exercises** - Add your own .txt files without rebuilding
 - ⏱️ **Automatic Timer** - Timer starts when you begin typing
@@ -31,7 +32,19 @@ A beautiful terminal-based touch typing trainer built with Python, Textual, and 
    cd TouchPy
    ```
 
-2. **Install dependencies**:
+2. **Create a virtual environment and install dependencies**:
+
+   ```powershell
+   py create-python-venv.py
+   .\.venv\Scripts\python.exe run.py
+   ```
+
+   The script creates `.venv` in the project folder and installs the packages
+   listed in `requirements.txt`. On other platforms, run
+   `python create-python-venv.py`, then launch with `./.venv/bin/python run.py`.
+
+   To install dependencies into your current Python environment instead:
+
    ```bash
    pip install -r requirements.txt
    ```
