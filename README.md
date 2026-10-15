@@ -18,6 +18,7 @@ A beautiful terminal-based touch typing trainer built with Python, Textual, and 
 - 📚 **Multiple Exercises** - 17+ built-in exercises including Norwegian texts
 - 🇳🇴 **Common Norwegian Words** - Practice 1,000 frequently used Norwegian words
 - 🇳🇴 **Norwegian Support** - Special exercises for æ, ø, å and Norwegian literature
+- 🇳🇴 **Progressive Norwegian Keyboard Course** - Learn new letters step by step, then practice words
 - ➕ **Custom Exercises** - Add your own .txt files without rebuilding
 - ⏱️ **Automatic Timer** - Timer starts when you begin typing
 - 📊 **Performance Summary** - Get detailed stats after each exercise
@@ -117,6 +118,7 @@ TouchPy includes several exercise categories:
 
 ### Norwegian Exercises (Norske øvelser)
 
+- Norsk tastaturstige med bokstavdrill og ord for hvert trinn
 - Norske bokstaver (æ, ø, å)
 - Norske ord
 - Norske pangram og setninger

@@ -9,6 +9,20 @@ alfabetiske ordene i [FrequencyWords-listen for norsk (OpenSubtitles 2018)](http
 Ordlisten er laget av hermitdave og innholdet er lisensiert under
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
+## Norsk tastaturstige
+
+Øvelsene `018`–`033` gir en gradvis introduksjon til det norske tastaturet.
+Bokstavøvelsene blander nye bokstaver med bokstavene fra tidligere trinn.
+Bokstavene står samlet i varierende grupper på to, tre eller fire før et
+mellomrom. Ordøvelsene bruker bare bokstaver som er introdusert til og med
+trinnet.
+
+Vanlige bokstaver kommer først, mens de sjeldne `q`, `w` og `z` introduseres
+til slutt. Rekkefølgen er: hjemmeraden med `ø`, sammen med `e`, `i`, `r` og
+`t`; deretter `n` og `m`; `u` og `y`; `o`, `p` og `å`; `æ`; `x` og `c`; `v`
+og `b`; til slutt `q`, `w` og `z`. Det siste trinnet dekker hele alfabetet
+og tar også i bruk komma, punktum og bindestrek.
+
 ## For brukere av .exe-filen
 
 1. **Opprett en mappe** kalt `exercises` ved siden av `TouchPy.exe`:
