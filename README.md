@@ -132,6 +132,8 @@ TouchPy includes several exercise categories:
 - Fra Nordahl Grieg - "Ung må verden ennu være" (1938)
 - Fra Johan Bojer - "Den siste viking" (1921)
 - Fra Olav Duun - "Juvikingar" (1918)
+- Fra Franz Kafka - "Prosessen" (1925)
+- Fra Knut Hamsun - "Pan" (1894)
 
 All classic literature texts are from works published before 1955 and are in the public domain.
 

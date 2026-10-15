@@ -63,7 +63,11 @@ class MenuView(Screen):
             exercises: List of available exercises
         """
         super().__init__()
-        self.exercises = exercises
+        layout_order = {"Norwegian": 0, "English": 2}
+        self.exercises = sorted(
+            exercises,
+            key=lambda exercise: (layout_order.get(exercise.layout, 1), exercise.id),
+        )
     
     def compose(self) -> ComposeResult:
         """Compose the menu view."""
